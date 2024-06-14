@@ -4,15 +4,16 @@ import time
 from openai import OpenAI
 
 def response_generator():
-    default_response = "Sorry, Vincent didn't pay for OpenAI to make me a real cool chatbot, so I'll just spew random stuff"
+    default_response = "Sorry, Vincent didn't pay for OpenAI API to make me a real cool chatbot, so I'll just spew random stuff"
     response = random.choice(
         [
             "Hi there, how can i help?",
             "Rock n roll!",
             "You wanna a piece of me boy?",
             "Whatever",
+            "Ask Vincent to pay for OpenAI API so I can talk like a real person!"
         ]
-    ) if st.session_state.counter > 1 else default_response
+    ) if st.session_state.counter > 0 else default_response
 
     for word in response.split():
         yield word + " "
