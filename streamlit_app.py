@@ -4,7 +4,7 @@ import time
 from openai import OpenAI
 
 def response_generator():
-    default_response = "Sorry, Vincent didn't pay for OpenAI API to make me a real cool chatbot, so I'll just spew random stuff"
+    default_response = "Sorry, Vincent didn't pay for OpenAI API to make me a real cool chatbot, so I'll just say random stuff, but you get the idea"
     response = random.choice(
         [
             "Hi there, how can i help?",
