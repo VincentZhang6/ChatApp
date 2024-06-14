@@ -4,16 +4,21 @@ import time
 from openai import OpenAI
 
 def response_generator():
+    default_response = "Sorry, Vincent didn't pay for OpenAI to make me a real cool chatbot, so I'll just spew random stuff"
     response = random.choice(
         [
             "Hi there, how can i help?",
             "Rock n roll!",
             "You wanna a piece of me boy?",
+            "Whatever",
         ]
-    )
+    ) if st.session_state.counter > 1 else default_response
+
     for word in response.split():
         yield word + " "
         time.sleep(0.05)
+    st.session_state.counter += 1
+    print(st.session_state.counter)
 
 st.title("Chat Bot Example")
 
@@ -26,6 +31,10 @@ if "openai_model" not in st.session_state:
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+# Set counter
+if "counter" not in st.session_state:
+    st.session_state.counter = 0
 
 # Display chat messages from history on rerun
 for message in st.session_state.messages:
